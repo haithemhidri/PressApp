@@ -1,0 +1,38 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.title {
+  text-align: center;
+  margin: 20px 0; 
+  font-size: 3em; 
+  font-weight: bold; 
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.form-control, .dropdown-toggle {
+  margin-top: 10px;
+}
+
+.table-container {
+  margin-top: 20px;
+}
+
+.modal-footer {
+  justify-content: center;
+}
+
+.search-container {
+  margin-bottom: 20px;
+}
+
+.table th, .table td {
+  text-align: center;
+}

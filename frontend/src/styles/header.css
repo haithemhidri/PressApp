@@ -1,0 +1,31 @@
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1030; /* Ensure it stays above other elements */
+    background-color: #343a40; /* Match Sidebar background color */
+    border-bottom: 1px solid #ccc; /* Consistent border with Sidebar */
+  }
+  
+  .header .navbar {
+    height: 60px; /* Adjust height if needed */
+  }
+  
+  .header .navbar-brand {
+    font-size: 1.5rem; /* Adjust font size */
+    color: #f8f9fa; /* Light color to match Sidebar */
+  }
+  
+  .header .nav-link {
+    color: #f8f9fa; /* Light color for links */
+  }
+  
+  .header .nav-link:hover {
+    color: #adb5bd; /* Lighter color on hover */
+  }
+  
+  .header .navbar-toggler {
+    border-color: #f8f9fa; /* Match toggle button color */
+  }
+  
