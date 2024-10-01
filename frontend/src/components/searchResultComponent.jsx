@@ -66,12 +66,8 @@ const SearchResultComponent = () => {
               <td>{new Date(result.launchDateTime).toLocaleDateString()}</td>
               <td>{result.searchTerm}</td>
               <td>
-                {result.target.websites.map((website) => (
-                  <div key={website._id}>{website.name}</div>
-                ))}
-                {result.target.groups.map((group) => (
-                  <div key={group._id}>{group.name}</div>
-                ))}
+                Websites: {result.target.websites.map((website) => website.url).join(', ')}<br />
+                Group: {result.target.groups.length > 0 ? result.target.groups.map(group => group.name).join(', ') : 'None'}
               </td>
               <td>
                 <Button variant="primary" onClick={() => handleShowResults(result)}>
@@ -84,7 +80,12 @@ const SearchResultComponent = () => {
       </Table>
 
       {/* Results Modal */}
-      <Modal show={showResultsModal} onHide={() => setShowResultsModal(false)}>
+      <Modal 
+        show={showResultsModal} 
+        onHide={() => setShowResultsModal(false)} 
+        size="xl"  
+        centered
+      >
         <Modal.Header closeButton>
           <Modal.Title>Search Results</Modal.Title>
         </Modal.Header>
@@ -100,13 +101,17 @@ const SearchResultComponent = () => {
               <tbody>
                 {selectedResult.results.map((result, index) => (
                   <tr key={index}>
-                    <td>{result.websiteUrl}</td>
-                    <td>
+                  <td>{result.websiteUrl}</td>
+                  <td className="wide-link">
+                    {result.firstResultLink === 'No article found' ? (
+                      'No article found'  // Display as plain text if no article
+                    ) : (
                       <a href={result.firstResultLink} target="_blank" rel="noopener noreferrer">
                         {result.firstResultLink}
                       </a>
-                    </td>
-                  </tr>
+                    )}
+                  </td>
+                </tr>
                 ))}
               </tbody>
             </Table>

@@ -11,23 +11,23 @@ const Sidebar = () => {
         <LinkContainer to="/">
           <Nav.Link>Home</Nav.Link>
         </LinkContainer>
-        <LinkContainer to="/search-configuration">
-          <Nav.Link>Search</Nav.Link>
-        </LinkContainer>
-        <LinkContainer to="/history">
-          <Nav.Link>Search History</Nav.Link>
-        </LinkContainer>
         <LinkContainer to="/target-websites">
           <Nav.Link>Target Websites</Nav.Link> 
         </LinkContainer>
         <LinkContainer to="/website-groups">
           <Nav.Link>Website Groups</Nav.Link>
         </LinkContainer>
-        <LinkContainer to="/profile">
-          <Nav.Link>Profile</Nav.Link>
+        <LinkContainer to="/search-configuration">
+          <Nav.Link>Search</Nav.Link>
+        </LinkContainer>
+        <LinkContainer to="/history">
+          <Nav.Link>Search Results</Nav.Link>
         </LinkContainer>
         <LinkContainer to="/settings">
           <Nav.Link>Settings</Nav.Link>
+        </LinkContainer>
+        <LinkContainer to="/profile">
+          <Nav.Link>Profile</Nav.Link>
         </LinkContainer>
         <LinkContainer to="/help">
           <Nav.Link>Help</Nav.Link>
