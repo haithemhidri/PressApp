@@ -63,7 +63,7 @@ const SearchResultComponent = () => {
         <tbody>
           {filteredResults.map((result) => (
             <tr key={result._id}>
-              <td>{new Date(result.launchDateTime).toLocaleDateString()}</td>
+              <td>{new Date(result.launchDateTime).toLocaleString()}</td>
               <td>{result.searchTerm}</td>
               <td>
                 Websites: {result.target.websites.map((website) => website.url).join(', ')}<br />
