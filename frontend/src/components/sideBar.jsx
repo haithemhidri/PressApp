@@ -18,7 +18,7 @@ const Sidebar = () => {
           <Nav.Link>Website Groups</Nav.Link>
         </LinkContainer>
         <LinkContainer to="/search-configuration">
-          <Nav.Link>Search</Nav.Link>
+          <Nav.Link>Search Configurations</Nav.Link>
         </LinkContainer>
         <LinkContainer to="/history">
           <Nav.Link>Search Results</Nav.Link>
