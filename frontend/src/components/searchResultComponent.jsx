@@ -14,8 +14,9 @@ const SearchResultComponent = () => {
     const fetchResults = async () => {
       try {
         const { data } = await axios.get('/api/search-result');
-        setResults(data);
-        setFilteredResults(data);
+        const sortedData = data.sort((a, b) => new Date(b.launchDateTime) - new Date(a.launchDateTime));
+        setResults(sortedData);
+        setFilteredResults(sortedData);
       } catch (error) {
         console.error('Error fetching search results:', error);
       }
