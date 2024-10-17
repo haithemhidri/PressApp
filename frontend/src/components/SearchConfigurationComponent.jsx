@@ -151,7 +151,7 @@ const SearchConfigurationComponent = () => {
   };
 
   const launchSearch = async (config) => {
-    const { searchTerm, websiteUrls } = config; // Use websiteUrls directly from config
+    const { searchTerm, websites, group, websiteUrls } = config; // Use websiteUrls directly from config
     const apiKey = 'AIzaSyBcZoTzdNgFSgU4Gu2gnlrrN7wy2QxhnGk'; // Google API key
     const searchEngineId = 'c0fc3bc788f9d4655'; // Custom Search Engine ID
     // Show alert on search launch
@@ -162,8 +162,8 @@ const SearchConfigurationComponent = () => {
     try {
       // Loop through each website URL and perform a search
       for (const website of websiteUrls) {
-        const query = `${searchTerm} site:${website}`; // Restrict search to this website
-  
+        const query = `site:${website} ${searchTerm}`; // Restrict search to this website
+        console.log(query);
         const response = await axios.get('https://www.googleapis.com/customsearch/v1', {
           params: {
             key: apiKey,
@@ -174,7 +174,7 @@ const SearchConfigurationComponent = () => {
   
         if (response.data.items && response.data.items.length > 0) {
           const firstResultLink = response.data.items[0].link; // Get the first result link
-          console.log(`Results for ${website}:`, firstResultLink);
+          
           
           // Store the result in the array
           searchResults.push({
@@ -189,17 +189,21 @@ const SearchConfigurationComponent = () => {
           });
         }
       }
-  
+      
+      
       // Send search results to the backend for storage
       await axios.post('/api/result', {
         launchDateTime: new Date(), // Current date and time
         searchTerm: searchTerm,
-        target: { websites: websiteUrls }, // Assuming websiteUrls are ObjectIds
+        target: { 
+          websites: websites.map((website) => website._id),
+          groups: group ? [group._id] : [], // Envoyer comme tableau
+        }, 
         results: searchResults,
       });
   
     } catch (error) {
-      console.error('Error during search:', error);
+      console.error('Error during search:', error.response?.data || error.message);
     }
   };
   

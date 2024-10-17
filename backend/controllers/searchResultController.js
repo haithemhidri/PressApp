@@ -5,16 +5,13 @@ export const saveSearchResult = async (req, res) => {
   try {
     const { launchDateTime, searchTerm, target, results } = req.body;
 
-    // Fetch ObjectIds for the websites from the URLs
-    const websiteObjects = await TargetWebsite.find({ url: { $in: target.websites } });
-
-    const websiteIds = websiteObjects.map(website => website._id); // Get the ObjectIds
+    
 
     // Create a new search result entry
     const searchResult = new SearchResult({
       launchDateTime,
       searchTerm,
-      target: { websites: websiteIds, groups: target.groups },
+      target: { websites: target.websites, groups: target.groups },
       results,
     });
 
